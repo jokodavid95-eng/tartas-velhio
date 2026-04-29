@@ -30,7 +30,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  background: var(--cream);
+  background: #2EC8D9;
   color: var(--ink);
   font-family: 'Bricolage Grotesque', Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,16 +46,16 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 36px;
-  background: rgba(249,247,244,0.92);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(28,10,4,0.10);
+  border-bottom: 1px solid rgba(28,10,4,0.08);
   z-index: 200;
   transition: background 0.4s, border-color 0.4s;
 }
 nav.scrolled {
-  background: rgba(249,247,244,0.55);
-  border-color: rgba(28,10,4,0.06);
+  background: rgba(255,255,255,0.55);
+  border-color: rgba(28,10,4,0.04);
 }
 
 .nav-logo {
@@ -542,11 +542,11 @@ nav.scrolled {
   border-radius: 50%;
   opacity: 0.35;
 }
-.pack-card.pack-a { background: var(--salmon-lt); }
+.pack-card.pack-a { background: #fff; }
 .pack-card.pack-a::before { background: var(--salmon); }
-.pack-card.pack-b { background: var(--yellow-lt); }
+.pack-card.pack-b { background: #fff; }
 .pack-card.pack-b::before { background: oklch(0.80 0.16 80); }
-.pack-card.pack-c { background: var(--green-lt); }
+.pack-card.pack-c { background: #fff; }
 .pack-card.pack-c::before { background: var(--green); }
 
 .pack-emoji { font-size: 36px; line-height: 1; }
@@ -653,8 +653,8 @@ nav.scrolled {
   flex-direction: column;
   gap: 8px;
 }
-.adaptada-card.card-rose { background: var(--rose-lt); }
-.adaptada-card.card-yellow { background: var(--yellow-lt); }
+.adaptada-card.card-rose { background: #fff; }
+.adaptada-card.card-yellow { background: #fff; }
 .adaptada-icon { font-size: 32px; margin-bottom: 4px; }
 .adaptada-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
 .adaptada-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
@@ -681,7 +681,7 @@ nav.scrolled {
 .info-horario {
   padding: 40px 36px;
   border-right: var(--border);
-  background: var(--cream);
+  background: #fff;
 }
 
 .horario-list {
@@ -791,7 +791,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--cream);
+  background: #fff;
 }
 .footer-logo {
   display: flex;
@@ -939,8 +939,8 @@ footer {
   <div class="hero-blob2"></div>
 
   <!-- stickers flotantes -->
-  <div class="sticker" style="top:88px;right:200px;background:var(--yellow-lt);transform:rotate(8deg);">Horneado hoy ✦</div>
-  <div class="sticker" style="top:140px;right:96px;background:var(--green-lt);transform:rotate(-6deg);">Encargo 48h</div>
+  <div class="sticker" style="top:88px;right:200px;background:rgba(255,255,255,0.85);transform:rotate(8deg);">Horneado hoy ✦</div>
+  <div class="sticker" style="top:140px;right:96px;background:rgba(255,255,255,0.85);transform:rotate(-6deg);">Encargo 48h</div>
 
   <div class="hero-content">
     <h1 class="hero-title">
@@ -1076,31 +1076,11 @@ footer {
         </div>
       </div>
 
-      <!-- 05 Dulce de Leche -->
-      <div class="tarta-card" style="transform:rotate(-1.4deg)">
-        <div class="card-num">05</div>
-        <div class="card-img" style="background:oklch(0.93 0.11 58);">🥛</div>
-        <div>
-          <h3 class="card-name">Dulce de Leche</h3>
-          <div class="card-name-script">Uruguay original</div>
-        </div>
-        <p class="card-desc">Receta directa de Uruguay. Dulce de leche de cuchara integrado en la masa. El sabor de casa.</p>
-        <div class="card-footer">
-          <div class="card-tags">
-            <span class="card-tag">uruguay</span>
-            <span class="card-tag">caramelo</span>
-          </div>
-          <div>
-            <div class="card-price">35€</div>
-            <div class="card-price-sub">tarta G</div>
-          </div>
-        </div>
-      </div>
 
       <!-- 06 Café -->
       <div class="tarta-card" style="transform:rotate(1.8deg)">
         <div class="card-num">06</div>
-        <div class="card-img" onclick="openLightbox('queso%20y%20cafe.jpg.png','Café')"><img src="queso%20y%20cafe.jpg.png" alt="Café"></div>
+        <div class="card-img" onclick="openLightbox('queso-y-cafe.jpg.png','Café')"><img src="queso-y-cafe.jpg.png" alt="Café"></div>
         <div>
           <h3 class="card-name">Café</h3>
           <div class="card-name-script">Espresso cheesecake</div>
@@ -1121,7 +1101,7 @@ footer {
       <!-- 07 Pantera Rosa -->
       <div class="tarta-card" style="transform:rotate(-2.0deg)">
         <div class="card-num">07</div>
-        <div class="card-img" onclick="openLightbox('pantera%20rosa.jpg.png','Pantera Rosa')"><img src="pantera%20rosa.jpg.png" alt="Pantera Rosa"></div>
+        <div class="card-img" onclick="openLightbox('pantera-rosa.jpg.png','Pantera Rosa')"><img src="pantera-rosa.jpg.png" alt="Pantera Rosa"></div>
         <div>
           <h3 class="card-name">Pantera Rosa</h3>
           <div class="card-name-script">Pink lady</div>
@@ -1164,7 +1144,7 @@ footer {
       <!-- 09 Chocolate Belga -->
       <div class="tarta-card" style="transform:rotate(-1.6deg)">
         <div class="card-num">09</div>
-        <div class="card-img" onclick="openLightbox('queso%20y%20choc%20belga.jpg.png','Chocolate Belga')"><img src="queso%20y%20choc%20belga.jpg.png" alt="Chocolate Belga"></div>
+        <div class="card-img" onclick="openLightbox('queso-y-choc-belga.jpg.png','Chocolate Belga')"><img src="queso-y-choc-belga.jpg.png" alt="Chocolate Belga"></div>
         <div>
           <h3 class="card-name">Chocolate Belga</h3>
           <div class="card-name-script">Belgian dark</div>
@@ -1185,7 +1165,7 @@ footer {
       <!-- 10 Mango y Chocolate Blanco -->
       <div class="tarta-card" style="transform:rotate(2.1deg)">
         <div class="card-num">10</div>
-        <div class="card-img" onclick="openLightbox('queso%20de%20mango%20y%20choc%20blanco%2Cjpg.png','Mango y Chocolate Blanco')"><img src="queso%20de%20mango%20y%20choc%20blanco%2Cjpg.png" alt="Mango y Chocolate Blanco"></div>
+        <div class="card-img" onclick="openLightbox('queso-mango-choc-blanco.jpg.png','Mango y Chocolate Blanco')"><img src="queso-mango-choc-blanco.jpg.png" alt="Mango y Chocolate Blanco"></div>
         <div>
           <h3 class="card-name">Mango y Choc. Blanco</h3>
           <div class="card-name-script">Tropical twist</div>
@@ -1284,12 +1264,6 @@ footer {
     </div>
     <div class="precios-row">
       <div class="precios-row-name"><span class="precios-row-emoji">🖤</span> Oreo</div>
-      <div class="precios-cell">35€</div>
-      <div class="precios-cell">28€</div>
-      <div class="precios-cell">10€</div>
-    </div>
-    <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🥛</span> Dulce de Leche</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
@@ -1405,12 +1379,12 @@ footer {
   </h2>
 
   <div class="pedir-grid">
-    <div class="pedir-step" style="background:var(--salmon-lt);">
+    <div class="pedir-step" style="background:#fff;">
       <div class="pedir-step-num">01</div>
       <div class="pedir-step-title">Elige tu tarta</div>
       <p class="pedir-step-desc">Mira la carta, decide sabor y tamaño. Si no sabes, pide el Pack Degustación y prueba tres de una vez.</p>
     </div>
-    <div class="pedir-step" style="background:var(--yellow-lt);">
+    <div class="pedir-step" style="background:#fff;">
       <div class="pedir-step-num">02</div>
       <div class="pedir-step-title">Escríbenos con 48h</div>
       <p class="pedir-step-desc">Horneamos bajo pedido. Contáctanos con al menos 48 horas de antelación para tener tu tarta lista y recién hecha.</p>
@@ -1419,7 +1393,7 @@ footer {
         WhatsApp · 661 764 709
       </a>
     </div>
-    <div class="pedir-step" style="background:var(--green-lt);">
+    <div class="pedir-step" style="background:#fff;">
       <div class="pedir-step-num">03</div>
       <div class="pedir-step-title">Recoge o recibe</div>
       <p class="pedir-step-desc">Pasa por nuestra tienda en Ciempozuelos o consulta disponibilidad de entrega a domicilio en tu zona.</p>
