@@ -11,16 +11,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* ── Extraídos del hero VELHIO ── */
-  --cream:      #F2E2C4;   /* crema dorada del relleno */
-  --ink:        #1C0A04;   /* espresso profundo de la corteza */
-  --salmon:     oklch(0.56 0.15 40);    /* caramelo/toffee de la salsa */
-  --salmon-lt:  oklch(0.90 0.07 40);   /* caramelo claro */
-  --green:      oklch(0.54 0.14 132);  /* verde pistacho del crumble */
-  --green-lt:   oklch(0.89 0.07 132);  /* pistacho claro */
-  --rose:       oklch(0.70 0.16 8);    /* rosa frambuesa del panel L */
-  --rose-lt:    oklch(0.92 0.08 8);    /* rosa claro */
-  --yellow-lt:  oklch(0.92 0.10 66);   /* dorado kinder/base galleta */
+  --cream:      #F9F7F4;   /* blanco cálido neutro */
+  --ink:        #1C0A04;
+  --salmon:     oklch(0.56 0.15 40);
+  --salmon-lt:  oklch(0.96 0.03 40);   /* muy sutil, casi blanco */
+  --green:      oklch(0.54 0.14 132);
+  --green-lt:   oklch(0.95 0.03 132);  /* muy sutil */
+  --rose:       oklch(0.70 0.16 8);
+  --rose-lt:    oklch(0.97 0.02 8);    /* casi blanco */
+  --yellow-lt:  oklch(0.96 0.04 66);   /* apenas dorado */
   --muted:      #5C3D20;
   --border:     2.5px solid var(--ink);
   --shadow:     5px 5px 0 var(--ink);
@@ -38,7 +37,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAV ──────────────────────────────────────────── */
+/* ── NAV GLASS ────────────────────────────────────── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -47,9 +46,16 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 36px;
-  background: var(--cream);
-  border-bottom: var(--border);
+  background: rgba(249,247,244,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(28,10,4,0.10);
   z-index: 200;
+  transition: background 0.4s, border-color 0.4s;
+}
+nav.scrolled {
+  background: rgba(249,247,244,0.55);
+  border-color: rgba(28,10,4,0.06);
 }
 
 .nav-logo {
@@ -837,6 +843,48 @@ footer {
   bottom: -80px; left: -120px;
 }
 
+/* ── LIGHTBOX ─────────────────────────────────────── */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+}
+#lightbox.active { display: flex; animation: lbFade 0.22s ease; }
+#lightbox-img {
+  max-width: min(88vw, 720px);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  animation: lbZoom 0.25s ease;
+  pointer-events: none;
+}
+#lightbox-close {
+  position: fixed;
+  top: 20px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+@keyframes lbFade { from { opacity:0; } to { opacity:1; } }
+@keyframes lbZoom { from { transform:scale(0.86); opacity:0; } to { transform:scale(1); opacity:1; } }
+
+.card-img { cursor: pointer; }
+.card-img:hover img { transform: scale(1.04); }
+.card-img img { transition: transform 0.3s ease; }
+
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 960px) {
   .tartas-grid { grid-template-columns: repeat(2, 1fr); }
@@ -946,7 +994,7 @@ footer {
       <div class="tarta-card" style="transform:rotate(-1.8deg)">
         <div class="card-num">01</div>
         <div class="card-badge fav">★ Favorita</div>
-        <div class="card-img" style="background:oklch(0.93 0.07 45);">🍰</div>
+        <div class="card-img" onclick="openLightbox('clasica.png','Clásica')"><img src="clasica.png" alt="Clásica"></div>
         <div>
           <h3 class="card-name">Clásica</h3>
           <div class="card-name-script">The classic</div>
@@ -967,7 +1015,7 @@ footer {
       <!-- 02 Nutella -->
       <div class="tarta-card" style="transform:rotate(1.5deg)">
         <div class="card-num">02</div>
-        <div class="card-img" style="background:oklch(0.87 0.06 35);">🍫</div>
+        <div class="card-img" onclick="openLightbox('nutella.jpg.png','Nutella')"><img src="nutella.jpg.png" alt="Nutella"></div>
         <div>
           <h3 class="card-name">Nutella</h3>
           <div class="card-name-script">Hazelnut heaven</div>
@@ -989,7 +1037,7 @@ footer {
       <div class="tarta-card" style="transform:rotate(-2.2deg)">
         <div class="card-num">03</div>
         <div class="card-badge fav">★ Favorita</div>
-        <div class="card-img" style="background:oklch(0.90 0.09 44);">🍪</div>
+        <div class="card-img" onclick="openLightbox('lotus.jpg.png','Lotus')"><img src="lotus.jpg.png" alt="Lotus"></div>
         <div>
           <h3 class="card-name">Lotus</h3>
           <div class="card-name-script">Caramel biscoff</div>
@@ -1010,7 +1058,7 @@ footer {
       <!-- 04 Oreo -->
       <div class="tarta-card" style="transform:rotate(2.0deg)">
         <div class="card-num">04</div>
-        <div class="card-img" style="background:oklch(0.88 0.02 260);">🖤</div>
+        <div class="card-img" onclick="openLightbox('oreo.jpg.png','Oreo')"><img src="oreo.jpg.png" alt="Oreo"></div>
         <div>
           <h3 class="card-name">Oreo</h3>
           <div class="card-name-script">Cookies & cream</div>
@@ -1052,7 +1100,7 @@ footer {
       <!-- 06 Café -->
       <div class="tarta-card" style="transform:rotate(1.8deg)">
         <div class="card-num">06</div>
-        <div class="card-img" style="background:oklch(0.86 0.06 36);">☕</div>
+        <div class="card-img" onclick="openLightbox('queso%20y%20cafe.jpg.png','Café')"><img src="queso%20y%20cafe.jpg.png" alt="Café"></div>
         <div>
           <h3 class="card-name">Café</h3>
           <div class="card-name-script">Espresso cheesecake</div>
@@ -1073,7 +1121,7 @@ footer {
       <!-- 07 Pantera Rosa -->
       <div class="tarta-card" style="transform:rotate(-2.0deg)">
         <div class="card-num">07</div>
-        <div class="card-img" style="background:oklch(0.91 0.11 5);">🩷</div>
+        <div class="card-img" onclick="openLightbox('pantera%20rosa.jpg.png','Pantera Rosa')"><img src="pantera%20rosa.jpg.png" alt="Pantera Rosa"></div>
         <div>
           <h3 class="card-name">Pantera Rosa</h3>
           <div class="card-name-script">Pink lady</div>
@@ -1095,7 +1143,7 @@ footer {
       <div class="tarta-card" style="transform:rotate(1.3deg)">
         <div class="card-num">08</div>
         <div class="card-badge fav">★ Favorita</div>
-        <div class="card-img" style="background:oklch(0.88 0.10 140);">🟢</div>
+        <div class="card-img" onclick="openLightbox('pistacho.jpg.png','Pistacho')"><img src="pistacho.jpg.png" alt="Pistacho"></div>
         <div>
           <h3 class="card-name">Pistacho</h3>
           <div class="card-name-script">Pistachio dream</div>
@@ -1116,7 +1164,7 @@ footer {
       <!-- 09 Chocolate Belga -->
       <div class="tarta-card" style="transform:rotate(-1.6deg)">
         <div class="card-num">09</div>
-        <div class="card-img" style="background:oklch(0.85 0.07 30);">🍫</div>
+        <div class="card-img" onclick="openLightbox('queso%20y%20choc%20belga.jpg.png','Chocolate Belga')"><img src="queso%20y%20choc%20belga.jpg.png" alt="Chocolate Belga"></div>
         <div>
           <h3 class="card-name">Chocolate Belga</h3>
           <div class="card-name-script">Belgian dark</div>
@@ -1137,7 +1185,7 @@ footer {
       <!-- 10 Mango y Chocolate Blanco -->
       <div class="tarta-card" style="transform:rotate(2.1deg)">
         <div class="card-num">10</div>
-        <div class="card-img" style="background:oklch(0.94 0.13 80);">🥭</div>
+        <div class="card-img" onclick="openLightbox('queso%20de%20mango%20y%20choc%20blanco%2Cjpg.png','Mango y Chocolate Blanco')"><img src="queso%20de%20mango%20y%20choc%20blanco%2Cjpg.png" alt="Mango y Chocolate Blanco"></div>
         <div>
           <h3 class="card-name">Mango y Choc. Blanco</h3>
           <div class="card-name-script">Tropical twist</div>
@@ -1440,6 +1488,12 @@ footer {
   </div>
 </section>
 
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div id="lightbox-close" onclick="closeLightbox()">✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">
@@ -1456,5 +1510,22 @@ footer {
   </div>
 </footer>
 
+<script>
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+</script>
 </body>
 </html>
