@@ -1,0 +1,1460 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Velhio — Tartas de queso artesanales · Ciempozuelos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Extraídos del hero VELHIO ── */
+  --cream:      #F2E2C4;   /* crema dorada del relleno */
+  --ink:        #1C0A04;   /* espresso profundo de la corteza */
+  --salmon:     oklch(0.56 0.15 40);    /* caramelo/toffee de la salsa */
+  --salmon-lt:  oklch(0.90 0.07 40);   /* caramelo claro */
+  --green:      oklch(0.54 0.14 132);  /* verde pistacho del crumble */
+  --green-lt:   oklch(0.89 0.07 132);  /* pistacho claro */
+  --rose:       oklch(0.70 0.16 8);    /* rosa frambuesa del panel L */
+  --rose-lt:    oklch(0.92 0.08 8);    /* rosa claro */
+  --yellow-lt:  oklch(0.92 0.10 66);   /* dorado kinder/base galleta */
+  --muted:      #5C3D20;
+  --border:     2.5px solid var(--ink);
+  --shadow:     5px 5px 0 var(--ink);
+  --shadow-sm:  3px 3px 0 var(--ink);
+  --r-card:     22px;
+  --nav-h:      64px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Bricolage Grotesque', Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── NAV ──────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  background: var(--cream);
+  border-bottom: var(--border);
+  z-index: 200;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.nav-logo-dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--salmon);
+  border: 2px solid var(--ink);
+  flex-shrink: 0;
+}
+.nav-logo-name {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.nav-logo-script {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--salmon);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 40px;
+  border: var(--border);
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+}
+.chip-dark { background: var(--ink); color: var(--cream); }
+.chip-light { background: var(--cream); color: var(--ink); }
+.chip-salmon { background: var(--salmon); color: #fff; }
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  margin-top: var(--nav-h);
+  position: relative;
+  width: 100%;
+  min-height: calc(100svh - var(--nav-h));
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: #C49060;  /* toffee cálido — fallback sin imagen */
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(28,13,5,0.0) 30%,
+    rgba(28,13,5,0.72) 100%
+  );
+}
+
+/* blobs sobre el hero */
+.hero-blob1 {
+  position: absolute;
+  width: 560px; height: 560px;
+  border-radius: 62% 38% 55% 45% / 48% 52% 48% 52%;
+  background: oklch(0.56 0.15 40 / 0.20);  /* caramelo */
+  top: -200px; left: -180px;
+  animation: float1 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-blob2 {
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  background: oklch(0.54 0.14 132 / 0.16); /* pistacho */
+  top: 60px; right: -100px;
+  animation: float2 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float1 {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(30px) rotate(4deg); }
+}
+@keyframes float2 {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-24px) rotate(-3deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 48px 48px 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.hero-title {
+  font-size: clamp(56px, 9vw, 120px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -3px;
+  color: #fff;
+}
+.hero-title .script {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: clamp(52px, 8.5vw, 112px);
+  color: var(--salmon-lt);
+  display: inline-block;
+  transform: rotate(-4deg);
+  line-height: 0.9;
+  margin: 0 4px;
+}
+.hero-title .green-word {
+  color: var(--green-lt);
+}
+
+.hero-right {
+  flex-shrink: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+.hero-slogan {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(255,255,255,0.88);
+  max-width: 260px;
+  line-height: 1.1;
+  text-align: right;
+}
+.hero-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  line-height: 2;
+  text-align: right;
+}
+
+/* stickers hero */
+.sticker {
+  position: absolute;
+  border: var(--border);
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.3px;
+  box-shadow: var(--shadow-sm);
+  z-index: 4;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── MARQUEE ──────────────────────────────────────── */
+.marquee-wrap {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  background: var(--ink);
+  overflow: hidden;
+  padding: 12px 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  padding: 0 28px;
+  white-space: nowrap;
+}
+.marquee-track .dot {
+  color: var(--salmon);
+  padding: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── SECTIONS ────────────────────────────────────── */
+.section {
+  padding: 80px 48px;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -2px;
+  margin-bottom: 48px;
+}
+.section-title .script {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  color: var(--salmon);
+  font-size: 1.05em;
+}
+.section-title .green { color: var(--green); }
+
+/* ── TARTAS GRID ─────────────────────────────────── */
+.tartas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tarta-card {
+  background: #fff;
+  border: var(--border);
+  border-radius: var(--r-card);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.tarta-card:hover {
+  transform: translateY(-3px) rotate(0deg) !important;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.card-num {
+  position: absolute;
+  top: -14px; left: -14px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--salmon);
+  color: #fff;
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: var(--shadow-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-badge {
+  position: absolute;
+  top: -12px; right: 16px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 40px;
+}
+.card-badge.fav { background: var(--salmon); }
+.card-badge.new { background: var(--green); }
+
+.card-img {
+  border-radius: 14px;
+  border: 2px solid var(--ink);
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-name {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.0;
+}
+.card-name-script {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.card-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  flex-grow: 1;
+}
+
+.card-footer {
+  margin-top: auto;
+  border-top: 1.5px dashed rgba(28,13,5,0.3);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.card-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 40px;
+  border: 1.5px solid var(--ink);
+  background: var(--cream);
+}
+.card-price {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.card-price-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 1px;
+  text-align: right;
+}
+
+/* ── PRECIOS ──────────────────────────────────────── */
+.precios-wrap {
+  background: var(--ink);
+  border-radius: 28px;
+  border: var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.precios-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 16px 28px;
+  border-bottom: 1.5px solid rgba(255,244,232,0.15);
+}
+.precios-header span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,244,232,0.5);
+}
+.precios-header span:not(:first-child) { text-align: center; }
+
+.precios-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 18px 28px;
+  border-bottom: 1px solid rgba(255,244,232,0.08);
+  align-items: center;
+  transition: background 0.15s;
+}
+.precios-row:last-child { border-bottom: none; }
+.precios-row:hover { background: rgba(255,244,232,0.05); }
+
+.precios-row-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.precios-row-emoji { font-size: 20px; }
+.precios-row-fav {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--salmon);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.precios-cell {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--cream);
+}
+.precios-cell small {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(255,244,232,0.4);
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* ── PACKS ────────────────────────────────────────── */
+.packs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.pack-card {
+  border: var(--border);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pack-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  opacity: 0.35;
+}
+.pack-card.pack-a { background: var(--salmon-lt); }
+.pack-card.pack-a::before { background: var(--salmon); }
+.pack-card.pack-b { background: var(--yellow-lt); }
+.pack-card.pack-b::before { background: oklch(0.80 0.16 80); }
+.pack-card.pack-c { background: var(--green-lt); }
+.pack-card.pack-c::before { background: var(--green); }
+
+.pack-emoji { font-size: 36px; line-height: 1; }
+.pack-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.0;
+}
+.pack-price {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.pack-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.pack-detail {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── COMO PEDIR ───────────────────────────────────── */
+.pedir-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: var(--border);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.pedir-step {
+  padding: 36px 32px;
+  border-right: var(--border);
+  position: relative;
+}
+.pedir-step:last-child { border-right: none; }
+
+.pedir-step-num {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 72px;
+  color: var(--salmon);
+  line-height: 0.9;
+  margin-bottom: 16px;
+}
+.pedir-step-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.pedir-step-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.pedir-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 22px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.pedir-cta:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.pedir-cta.green {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── ADAPTADAS ────────────────────────────────────── */
+.adaptadas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.adaptada-card {
+  border: var(--border);
+  border-radius: var(--r-card);
+  padding: 28px 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.adaptada-card.card-rose { background: var(--rose-lt); }
+.adaptada-card.card-yellow { background: var(--yellow-lt); }
+.adaptada-icon { font-size: 32px; margin-bottom: 4px; }
+.adaptada-title { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+.adaptada-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.adaptada-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── HORARIO + MAPA ───────────────────────────────── */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: var(--border);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.info-horario {
+  padding: 40px 36px;
+  border-right: var(--border);
+  background: var(--cream);
+}
+
+.horario-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 24px;
+}
+.horario-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(28,13,5,0.1);
+  font-size: 15px;
+}
+.horario-row:last-child { border-bottom: none; }
+.horario-day { font-weight: 700; }
+.horario-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.horario-cerrado { color: var(--muted); font-style: italic; font-weight: 400; }
+
+.info-contacto {
+  padding: 40px 36px;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contacto-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--cream);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.contacto-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contacto-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.contacto-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,244,232,0.4);
+}
+.contacto-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.35;
+}
+
+.contacto-social {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+.social-pill {
+  background: rgba(255,244,232,0.1);
+  color: var(--cream);
+  border: 1.5px solid rgba(255,244,232,0.2);
+  border-radius: 40px;
+  padding: 8px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.social-pill:hover { background: rgba(255,244,232,0.18); }
+
+.contacto-wa {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: transform 0.15s, opacity 0.15s;
+}
+.contacto-wa:hover { transform: translateY(-2px); opacity: 0.92; }
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  border-top: var(--border);
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cream);
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.footer-logo-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--salmon);
+}
+.footer-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+.footer-right {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* ── BLOBS DECORATIVOS ────────────────────────────── */
+.blob-bg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+.blob-bg-1 {
+  width: 500px; height: 500px;
+  border-radius: 62% 38% 55% 45% / 48% 52% 48% 52%;
+  background: var(--salmon-lt);
+  top: -100px; right: -200px;
+}
+.blob-bg-2 {
+  width: 360px; height: 360px;
+  border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  background: var(--green-lt);
+  bottom: -80px; left: -120px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 960px) {
+  .tartas-grid { grid-template-columns: repeat(2, 1fr); }
+  .packs-grid { grid-template-columns: 1fr 1fr; }
+  .pedir-grid { grid-template-columns: 1fr; }
+  .pedir-step { border-right: none; border-bottom: var(--border); }
+  .pedir-step:last-child { border-bottom: none; }
+  .precios-header, .precios-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-logo-script { display: none; }
+
+  .hero-content { flex-direction: column; align-items: flex-start; padding: 32px 24px 40px; }
+  .hero-right { align-items: flex-start; text-align: left; }
+
+  .section { padding: 56px 24px; }
+  .tartas-grid { grid-template-columns: 1fr; }
+  .packs-grid { grid-template-columns: 1fr; }
+  .adaptadas-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .info-horario { border-right: none; border-bottom: var(--border); }
+
+  footer { flex-direction: column; gap: 12px; padding: 20px 24px; text-align: center; }
+  .footer-right { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-dot"></span>
+    <span class="nav-logo-name">Velhio</span>
+    <span class="nav-logo-script">tartas</span>
+  </a>
+  <div class="nav-actions">
+    <a href="#carta" class="chip chip-light">La carta</a>
+    <a href="#pedir" class="chip chip-salmon">Pedir por WhatsApp</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="hero.jpg.png" alt="Tartas de queso artesanales Velhio" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+
+  <!-- stickers flotantes -->
+  <div class="sticker" style="top:88px;right:200px;background:var(--yellow-lt);transform:rotate(8deg);">Horneado hoy ✦</div>
+  <div class="sticker" style="top:140px;right:96px;background:var(--green-lt);transform:rotate(-6deg);">Encargo 48h</div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Una cucharada<br>
+      <span class="script">y ya no hay</span><br>
+      <span class="green-word">vuelta atrás.</span>
+    </h1>
+    <div class="hero-right">
+      <p class="hero-slogan">Tartas de queso artesanales. Nacidas en Uruguay, horneadas en Madrid.</p>
+      <div class="hero-meta">
+        Ciempozuelos, Madrid<br>
+        Martes — Sábado · 10-14 / 17-20<br>
+        @velhio.r · @velhio
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Tartas de queso artesanales</span><span class="dot">★</span>
+    <span>Horneado cada día</span><span class="dot">★</span>
+    <span>Ciempozuelos · Madrid</span><span class="dot">★</span>
+    <span>Nacidas en Uruguay</span><span class="dot">★</span>
+    <span>Encargo con 48h</span><span class="dot">★</span>
+    <span>12 sabores · 3 tamaños</span><span class="dot">★</span>
+    <span>Tartas de queso artesanales</span><span class="dot">★</span>
+    <span>Horneado cada día</span><span class="dot">★</span>
+    <span>Ciempozuelos · Madrid</span><span class="dot">★</span>
+    <span>Nacidas en Uruguay</span><span class="dot">★</span>
+    <span>Encargo con 48h</span><span class="dot">★</span>
+    <span>12 sabores · 3 tamaños</span><span class="dot">★</span>
+  </div>
+</div>
+
+<!-- ── CARTA ── -->
+<section class="section" id="carta" style="position:relative;overflow:hidden;">
+  <div class="blob-bg blob-bg-1"></div>
+  <div class="blob-bg blob-bg-2"></div>
+  <div style="position:relative;z-index:1;">
+    <p class="section-eyebrow">La carta — Temporada 2025</p>
+    <h2 class="section-title">
+      Doce tartas.<br>
+      <span class="script">Cero atajos.</span>
+    </h2>
+
+    <div class="tartas-grid">
+
+      <!-- 01 Clásica -->
+      <div class="tarta-card" style="transform:rotate(-1.8deg)">
+        <div class="card-num">01</div>
+        <div class="card-badge fav">★ Favorita</div>
+        <div class="card-img" style="background:oklch(0.93 0.07 45);">🍰</div>
+        <div>
+          <h3 class="card-name">Clásica</h3>
+          <div class="card-name-script">The classic</div>
+        </div>
+        <p class="card-desc">La que empezó todo. Queso crema batido, base de galleta mantecosa, corazón que tiembla. Imprescindible.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">clásico</span>
+            <span class="card-tag">sin gluten opc.</span>
+          </div>
+          <div>
+            <div class="card-price">30€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Nutella -->
+      <div class="tarta-card" style="transform:rotate(1.5deg)">
+        <div class="card-num">02</div>
+        <div class="card-img" style="background:oklch(0.87 0.06 35);">🍫</div>
+        <div>
+          <h3 class="card-name">Nutella</h3>
+          <div class="card-name-script">Hazelnut heaven</div>
+        </div>
+        <p class="card-desc">Crema de avellanas italiana fundida sobre nuestra base clásica. La más adictiva del menú, sin perdón.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">avellana</span>
+            <span class="card-tag">chocolate</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Lotus -->
+      <div class="tarta-card" style="transform:rotate(-2.2deg)">
+        <div class="card-num">03</div>
+        <div class="card-badge fav">★ Favorita</div>
+        <div class="card-img" style="background:oklch(0.90 0.09 44);">🍪</div>
+        <div>
+          <h3 class="card-name">Lotus</h3>
+          <div class="card-name-script">Caramel biscoff</div>
+        </div>
+        <p class="card-desc">Galleta Lotus caramelizada dentro y fuera. El punto dulce perfecto que nadie consigue replicar.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">caramelo</span>
+            <span class="card-tag">galleta</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Oreo -->
+      <div class="tarta-card" style="transform:rotate(2.0deg)">
+        <div class="card-num">04</div>
+        <div class="card-img" style="background:oklch(0.88 0.02 260);">🖤</div>
+        <div>
+          <h3 class="card-name">Oreo</h3>
+          <div class="card-name-script">Cookies & cream</div>
+        </div>
+        <p class="card-desc">Base de galleta Oreo, crema blanca con trozos, cobertura de ganache negro. Blanco y negro a lo grande.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">chocolate</span>
+            <span class="card-tag">para compartir</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Dulce de Leche -->
+      <div class="tarta-card" style="transform:rotate(-1.4deg)">
+        <div class="card-num">05</div>
+        <div class="card-img" style="background:oklch(0.93 0.11 58);">🥛</div>
+        <div>
+          <h3 class="card-name">Dulce de Leche</h3>
+          <div class="card-name-script">Uruguay original</div>
+        </div>
+        <p class="card-desc">Receta directa de Uruguay. Dulce de leche de cuchara integrado en la masa. El sabor de casa.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">uruguay</span>
+            <span class="card-tag">caramelo</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Café -->
+      <div class="tarta-card" style="transform:rotate(1.8deg)">
+        <div class="card-num">06</div>
+        <div class="card-img" style="background:oklch(0.86 0.06 36);">☕</div>
+        <div>
+          <h3 class="card-name">Café</h3>
+          <div class="card-name-script">Espresso cheesecake</div>
+        </div>
+        <p class="card-desc">Crema de queso con espresso concentrado, base de galleta, sin anestesia. Para los que lo necesitan fuerte.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">café</span>
+            <span class="card-tag">intenso</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 Pantera Rosa -->
+      <div class="tarta-card" style="transform:rotate(-2.0deg)">
+        <div class="card-num">07</div>
+        <div class="card-img" style="background:oklch(0.91 0.11 5);">🩷</div>
+        <div>
+          <h3 class="card-name">Pantera Rosa</h3>
+          <div class="card-name-script">Pink lady</div>
+        </div>
+        <p class="card-desc">Frambuesa y remolacha en rosa chillón. La más llamativa de la carta y la que más se pide por redes.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">frambuesa</span>
+            <span class="card-tag">visual</span>
+          </div>
+          <div>
+            <div class="card-price">37€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 Pistacho -->
+      <div class="tarta-card" style="transform:rotate(1.3deg)">
+        <div class="card-num">08</div>
+        <div class="card-badge fav">★ Favorita</div>
+        <div class="card-img" style="background:oklch(0.88 0.10 140);">🟢</div>
+        <div>
+          <h3 class="card-name">Pistacho</h3>
+          <div class="card-name-script">Pistachio dream</div>
+        </div>
+        <p class="card-desc">Mousse de pistacho siciliano, crumble verde, la más gourmet de todas. La que pide quien entiende.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">gourmet</span>
+            <span class="card-tag">firma</span>
+          </div>
+          <div>
+            <div class="card-price">40€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 Chocolate Belga -->
+      <div class="tarta-card" style="transform:rotate(-1.6deg)">
+        <div class="card-num">09</div>
+        <div class="card-img" style="background:oklch(0.85 0.07 30);">🍫</div>
+        <div>
+          <h3 class="card-name">Chocolate Belga</h3>
+          <div class="card-name-script">Belgian dark</div>
+        </div>
+        <p class="card-desc">Chocolate de Bélgica en tres texturas. Oscuro, intenso, sin vuelta atrás. Para los que van en serio.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">chocolate</span>
+            <span class="card-tag">intenso</span>
+          </div>
+          <div>
+            <div class="card-price">40€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 Mango y Chocolate Blanco -->
+      <div class="tarta-card" style="transform:rotate(2.1deg)">
+        <div class="card-num">10</div>
+        <div class="card-img" style="background:oklch(0.94 0.13 80);">🥭</div>
+        <div>
+          <h3 class="card-name">Mango y Choc. Blanco</h3>
+          <div class="card-name-script">Tropical twist</div>
+        </div>
+        <p class="card-desc">Mango maduro más chocolate blanco cremoso. Tropical, refrescante, sorpresa garantizada en cada cuchara.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">tropical</span>
+            <span class="card-tag">refrescante</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 Happy Hippo -->
+      <div class="tarta-card" style="transform:rotate(-1.2deg)">
+        <div class="card-num">11</div>
+        <div class="card-img" style="background:oklch(0.92 0.09 55);">🦛</div>
+        <div>
+          <h3 class="card-name">Happy Hippo</h3>
+          <div class="card-name-script">Childhood favorite</div>
+        </div>
+        <p class="card-desc">Kinder Happy Hippo de protagonista. Crema de avellana con leche, base crujiente. La favorita de los que siguen siendo niños.</p>
+        <div class="card-footer">
+          <div class="card-tags">
+            <span class="card-tag">kinder</span>
+            <span class="card-tag">avellana</span>
+          </div>
+          <div>
+            <div class="card-price">35€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 Especial del Mes -->
+      <div class="tarta-card" style="transform:rotate(1.6deg);background:var(--ink);color:var(--cream);">
+        <div class="card-num" style="background:var(--cream);color:var(--ink);">★</div>
+        <div class="card-badge new">Novedad</div>
+        <div class="card-img" style="background:oklch(0.78 0.14 305);">🍩</div>
+        <div>
+          <h3 class="card-name" style="color:var(--cream);">Especial del Mes</h3>
+          <div class="card-name-script" style="color:var(--salmon-lt);">This month: Donut</div>
+        </div>
+        <p class="card-desc" style="color:rgba(255,244,232,0.7);">Cambia cada mes. Ahora: Donut. El mes que viene es sorpresa. Pregunta en WhatsApp para no perdértela.</p>
+        <div class="card-footer" style="border-color:rgba(255,244,232,0.2);">
+          <div class="card-tags">
+            <span class="card-tag" style="border-color:rgba(255,244,232,0.3);background:transparent;color:var(--cream);">limitada</span>
+          </div>
+          <div>
+            <div class="card-price" style="color:var(--cream);">40€</div>
+            <div class="card-price-sub">tarta G</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PRECIOS ── -->
+<section class="section" style="padding-top:0;">
+  <p class="section-eyebrow">Tamaños y precios</p>
+  <h2 class="section-title">
+    Tres tamaños,<br><span class="green">el tuyo.</span>
+  </h2>
+
+  <div class="precios-wrap">
+    <div class="precios-header">
+      <span>Sabor</span>
+      <span>Grande (G)<br><span style="color:rgba(255,244,232,0.3);font-size:9px;">8-10 raciones</span></span>
+      <span>Mediano (M)<br><span style="color:rgba(255,244,232,0.3);font-size:9px;">4-6 raciones</span></span>
+      <span>Pequeño (P)<br><span style="color:rgba(255,244,232,0.3);font-size:9px;">1-2 raciones</span></span>
+    </div>
+
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🍰</span> Clásica <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-cell">30€</div>
+      <div class="precios-cell">25€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span> Nutella</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🍪</span> Lotus <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🖤</span> Oreo</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🥛</span> Dulce de Leche</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">☕</span> Café</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🩷</span> Pantera Rosa</div>
+      <div class="precios-cell">37€</div>
+      <div class="precios-cell">30€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🟢</span> Pistacho <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-cell">40€</div>
+      <div class="precios-cell">30€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span> Chocolate Belga</div>
+      <div class="precios-cell">40€</div>
+      <div class="precios-cell">30€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🥭</span> Mango y Choc. Blanco</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">🦛</span> Happy Hippo</div>
+      <div class="precios-cell">35€</div>
+      <div class="precios-cell">28€</div>
+      <div class="precios-cell">10€</div>
+    </div>
+    <div class="precios-row">
+      <div class="precios-row-name"><span class="precios-row-emoji">★</span> Especial del Mes</div>
+      <div class="precios-cell">40€</div>
+      <div class="precios-cell">33€</div>
+      <div class="precios-cell">11€</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PACKS ── -->
+<section class="section" style="padding-top:0;">
+  <p class="section-eyebrow">Packs y porciones</p>
+  <h2 class="section-title">
+    ¿Sin decidirte?<br>
+    <span class="script">Pide el pack.</span>
+  </h2>
+
+  <div class="packs-grid">
+    <div class="pack-card pack-a">
+      <div class="pack-emoji">🎁</div>
+      <div class="pack-name">Pack Degustación</div>
+      <div class="pack-price">28€</div>
+      <p class="pack-desc">3 tartas pequeñas a elegir entre todos los sabores de la carta. La mejor forma de descubrir cuál es la tuya.</p>
+      <div class="pack-detail">+1€ si incluye la especial del mes</div>
+    </div>
+    <div class="pack-card pack-b">
+      <div class="pack-emoji">🍽️</div>
+      <div class="pack-name">Porción Individual</div>
+      <div class="pack-price">5€</div>
+      <p class="pack-desc">Una ración para comer ahí o llevarte. Clásica a 5€, sabores a 5,50€, especial del mes a 6€.</p>
+      <div class="pack-detail">Disponible en tienda · sin encargo previo</div>
+    </div>
+    <div class="pack-card pack-c">
+      <div class="pack-emoji">🎂</div>
+      <div class="pack-name">Pedido Personalizado</div>
+      <div class="pack-price">★</div>
+      <p class="pack-desc">¿Tienes algo en mente que no está en la carta? Cuéntanoslo. Nos adaptamos a eventos, celebraciones y caprichos.</p>
+      <div class="pack-detail">Consultar por WhatsApp · 48h mínimo</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ADAPTADAS ── -->
+<section class="section" style="padding-top:0;">
+  <p class="section-eyebrow">Para todos</p>
+  <h2 class="section-title">
+    Sin excluir<br>
+    <span class="green">a nadie.</span>
+  </h2>
+
+  <div class="adaptadas-grid">
+    <div class="adaptada-card card-rose">
+      <div class="adaptada-icon">🩺</div>
+      <div class="adaptada-title">Para diabéticos</div>
+      <p class="adaptada-desc">Tarta de queso clásica elaborada con eritritol como sustituto del azúcar. Mismo sabor, sin compromisos. Disponible en los tres tamaños.</p>
+      <div class="adaptada-note">G: 35€ · M: 28€ · P: 11€ · Bajo pedido (48h mín.)</div>
+    </div>
+    <div class="adaptada-card card-yellow">
+      <div class="adaptada-icon">🥛</div>
+      <div class="adaptada-title">Sin lactosa</div>
+      <p class="adaptada-desc">Tarta de queso clásica adaptada para intolerantes a la lactosa. Misma textura cremosa, ingredientes sustitutivos de primera calidad.</p>
+      <div class="adaptada-note">G: 35€ · M: 28€ · P: 11€ · Consultar disponibilidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO PEDIR ── -->
+<section class="section" id="pedir" style="padding-top:0;">
+  <p class="section-eyebrow">Cómo pedir</p>
+  <h2 class="section-title">
+    Fácil, rápido,<br>
+    <span class="script">delicioso.</span>
+  </h2>
+
+  <div class="pedir-grid">
+    <div class="pedir-step" style="background:var(--salmon-lt);">
+      <div class="pedir-step-num">01</div>
+      <div class="pedir-step-title">Elige tu tarta</div>
+      <p class="pedir-step-desc">Mira la carta, decide sabor y tamaño. Si no sabes, pide el Pack Degustación y prueba tres de una vez.</p>
+    </div>
+    <div class="pedir-step" style="background:var(--yellow-lt);">
+      <div class="pedir-step-num">02</div>
+      <div class="pedir-step-title">Escríbenos con 48h</div>
+      <p class="pedir-step-desc">Horneamos bajo pedido. Contáctanos con al menos 48 horas de antelación para tener tu tarta lista y recién hecha.</p>
+      <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Velhio%20🍰" class="pedir-cta green" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.113.549 4.1 1.51 5.829L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.371l-.36-.214-3.73.979.993-3.636-.234-.373A9.818 9.818 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+        WhatsApp · 661 764 709
+      </a>
+    </div>
+    <div class="pedir-step" style="background:var(--green-lt);">
+      <div class="pedir-step-num">03</div>
+      <div class="pedir-step-title">Recoge o recibe</div>
+      <p class="pedir-step-desc">Pasa por nuestra tienda en Ciempozuelos o consulta disponibilidad de entrega a domicilio en tu zona.</p>
+      <a href="https://maps.google.com/?q=Av.+Reverenda+Madre+María+Antonia,+5,+28350+Ciempozuelos,+Madrid" class="pedir-cta" target="_blank">Ver en Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── HORARIO + CONTACTO ── -->
+<section class="section" style="padding-top:0;">
+  <p class="section-eyebrow">Dónde y cuándo</p>
+  <h2 class="section-title">
+    Ven a vernos,<br>
+    <span class="script">te esperamos.</span>
+  </h2>
+
+  <div class="info-grid">
+    <div class="info-horario">
+      <p class="section-eyebrow">Horario de tienda</p>
+      <div class="horario-list">
+        <div class="horario-row">
+          <span class="horario-day">Martes — Viernes</span>
+          <span class="horario-time">10:00 – 14:00 · 17:00 – 20:00</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day">Sábado</span>
+          <span class="horario-time">10:00 – 14:00 · 17:00 – 20:00</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day">Domingo</span>
+          <span class="horario-time">11:00 – 14:00</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-day horario-cerrado">Lunes</span>
+          <span class="horario-time horario-cerrado">Cerrado</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-contacto">
+      <div>
+        <h3 class="contacto-title">Encuentra<br>tu tarta.</h3>
+        <div class="contacto-items">
+          <div class="contacto-item">
+            <span class="contacto-label">Dirección</span>
+            <span class="contacto-value">Av. Reverenda Madre María Antonia, 5<br>Bloque 1, Local 3<br>28350 Ciempozuelos, Madrid</span>
+          </div>
+          <div class="contacto-item">
+            <span class="contacto-label">Teléfono / WhatsApp</span>
+            <span class="contacto-value">661 764 709</span>
+          </div>
+          <div class="contacto-item">
+            <span class="contacto-label">Redes sociales</span>
+            <div class="contacto-social">
+              <a href="https://instagram.com/velhio.r" class="social-pill" target="_blank">@velhio.r</a>
+              <a href="https://tiktok.com/@velhio" class="social-pill" target="_blank">@velhio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20🍰" class="contacto-wa" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.113.549 4.1 1.51 5.829L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.371l-.36-.214-3.73.979.993-3.636-.234-.373A9.818 9.818 0 012.182 12C2.182 6.579 6.579 2.182 12 2.182S21.818 6.579 21.818 12 17.421 21.818 12 21.818z"/></svg>
+        Hacer pedido por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <span class="footer-logo-dot"></span>
+    <span>Velhio</span>
+  </div>
+  <div class="footer-meta">
+    Tartas de queso artesanales · Ciempozuelos, Madrid<br>
+    Nacidas en Uruguay · Horneadas cada día
+  </div>
+  <div class="footer-right">
+    661 764 709<br>
+    @velhio.r · @velhio
+  </div>
+</footer>
+
+</body>
+</html>
