@@ -245,34 +245,58 @@ nav.scrolled {
 .marquee-wrap {
   border-top: var(--border);
   border-bottom: var(--border);
-  background: var(--ink);
+  background: #fff;
   overflow: hidden;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 .marquee-track {
   display: flex;
   gap: 0;
-  animation: marquee 28s linear infinite;
+  animation: marquee 55s linear infinite;
   width: max-content;
 }
 .marquee-track span {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--cream);
-  padding: 0 28px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--ink);
+  padding: 0 18px;
   white-space: nowrap;
 }
 .marquee-track .dot {
   color: var(--salmon);
   padding: 0;
+  font-size: 18px;
 }
 
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ── NOTAS ────────────────────────────────────────── */
+.nota-wrap {
+  padding: 0 48px;
+  display: flex;
+}
+.nota-wrap.derecha { justify-content: flex-end; }
+.nota-wrap.centro  { justify-content: center; }
+.nota {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 1.35;
+  background: #fff;
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  padding: 14px 22px;
+  display: inline-block;
+  box-shadow: 4px 4px 0 var(--ink);
+  max-width: 320px;
+  color: var(--ink);
+}
+.nota em { color: var(--salmon); font-style: normal; }
 
 /* ── SECTIONS ────────────────────────────────────── */
 .section {
@@ -938,43 +962,36 @@ footer {
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
 
-  <!-- stickers flotantes -->
-  <div class="sticker" style="top:88px;right:200px;background:rgba(255,255,255,0.85);transform:rotate(8deg);">Horneado hoy ✦</div>
-  <div class="sticker" style="top:140px;right:96px;background:rgba(255,255,255,0.85);transform:rotate(-6deg);">Encargo 48h</div>
-
-  <div class="hero-content">
-    <h1 class="hero-title">
-      Una cucharada<br>
-      <span class="script">y ya no hay</span><br>
-      <span class="green-word">vuelta atrás.</span>
-    </h1>
-    <div class="hero-right">
-      <p class="hero-slogan">Tartas de queso artesanales. Nacidas en Uruguay, horneadas en Madrid.</p>
-      <div class="hero-meta">
-        Ciempozuelos, Madrid<br>
-        Martes — Sábado · 10-14 / 17-20<br>
-        @velhio.r · @velhio
-      </div>
-    </div>
-  </div>
+  <!-- stickers flotantes — hero limpio -->
+  <div class="sticker" style="top:90px;left:48px;background:rgba(255,255,255,0.88);transform:rotate(-5deg);">Horneado hoy ✦</div>
+  <div class="sticker" style="top:148px;left:52px;background:rgba(255,255,255,0.88);transform:rotate(4deg);">Encargo 48h 🕐</div>
 </section>
 
 <!-- ── MARQUEE ── -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span>Tartas de queso artesanales</span><span class="dot">★</span>
-    <span>Horneado cada día</span><span class="dot">★</span>
-    <span>Ciempozuelos · Madrid</span><span class="dot">★</span>
-    <span>Nacidas en Uruguay</span><span class="dot">★</span>
-    <span>Encargo con 48h</span><span class="dot">★</span>
-    <span>12 sabores · 3 tamaños</span><span class="dot">★</span>
-    <span>Tartas de queso artesanales</span><span class="dot">★</span>
-    <span>Horneado cada día</span><span class="dot">★</span>
-    <span>Ciempozuelos · Madrid</span><span class="dot">★</span>
-    <span>Nacidas en Uruguay</span><span class="dot">★</span>
-    <span>Encargo con 48h</span><span class="dot">★</span>
-    <span>12 sabores · 3 tamaños</span><span class="dot">★</span>
+    <span>🍰 tartas de queso artesanales</span><span class="dot">·</span>
+    <span>horneamos cada mañana</span><span class="dot">·</span>
+    <span>📍 Ciempozuelos, Madrid</span><span class="dot">·</span>
+    <span>receta de familia uruguaya</span><span class="dot">·</span>
+    <span>🕐 pide con 48h de antelación</span><span class="dot">·</span>
+    <span>11 sabores para elegir</span><span class="dot">·</span>
+    <span>sin atajos, sin prisa</span><span class="dot">·</span>
+    <span>📱 pedidos por WhatsApp</span><span class="dot">·</span>
+    <span>🍰 tartas de queso artesanales</span><span class="dot">·</span>
+    <span>horneamos cada mañana</span><span class="dot">·</span>
+    <span>📍 Ciempozuelos, Madrid</span><span class="dot">·</span>
+    <span>receta de familia uruguaya</span><span class="dot">·</span>
+    <span>🕐 pide con 48h de antelación</span><span class="dot">·</span>
+    <span>11 sabores para elegir</span><span class="dot">·</span>
+    <span>sin atajos, sin prisa</span><span class="dot">·</span>
+    <span>📱 pedidos por WhatsApp</span><span class="dot">·</span>
   </div>
+</div>
+
+<!-- nota 1 -->
+<div class="nota-wrap" style="padding-top:36px;padding-bottom:8px;">
+  <div class="nota" style="transform:rotate(-2deg);">una cucharada y<br>ya no hay <em>vuelta atrás.</em> 🍰</div>
 </div>
 
 <!-- ── CARTA ── -->
@@ -994,7 +1011,7 @@ footer {
       <div class="tarta-card" style="transform:rotate(-1.8deg)">
         <div class="card-num">01</div>
         <div class="card-badge fav">★ Favorita</div>
-        <div class="card-img" onclick="openLightbox('clasica.png','Clásica')"><img src="clasica.png" alt="Clásica"></div>
+        <div class="card-img" onclick="openLightbox('clasica.jpg.png','Clásica')"><img src="clasica.jpg.png" alt="Clásica"></div>
         <div>
           <h3 class="card-name">Clásica</h3>
           <div class="card-name-script">The classic</div>
@@ -1186,7 +1203,7 @@ footer {
       <!-- 11 Happy Hippo -->
       <div class="tarta-card" style="transform:rotate(-1.2deg)">
         <div class="card-num">11</div>
-        <div class="card-img" style="background:oklch(0.92 0.09 55);">🦛</div>
+        <div class="card-img" onclick="openLightbox('happyhipo.jpg.png','Happy Hippo')"><img src="happyhipo.jpg.png" alt="Happy Hippo"></div>
         <div>
           <h3 class="card-name">Happy Hippo</h3>
           <div class="card-name-script">Childhood favorite</div>
@@ -1313,6 +1330,11 @@ footer {
   </div>
 </section>
 
+<!-- nota 2 -->
+<div class="nota-wrap derecha" style="padding-bottom:8px;">
+  <div class="nota" style="transform:rotate(2deg);">nacidas en Uruguay,<br>horneadas en <em>Madrid.</em> 🌍</div>
+</div>
+
 <!-- ── PACKS ── -->
 <section class="section" style="padding-top:0;">
   <p class="section-eyebrow">Packs y porciones</p>
@@ -1369,6 +1391,11 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- nota 3 -->
+<div class="nota-wrap centro" style="padding-bottom:8px;">
+  <div class="nota" style="transform:rotate(-1.5deg);">sin prisa, pero sin pausa.<br>todo <em>hecho a mano.</em> 🤍</div>
+</div>
 
 <!-- ── CÓMO PEDIR ── -->
 <section class="section" id="pedir" style="padding-top:0;">
@@ -1464,7 +1491,6 @@ footer {
 
 <!-- ── LIGHTBOX ── -->
 <div id="lightbox" onclick="closeLightbox()">
-  <div id="lightbox-close" onclick="closeLightbox()">✕</div>
   <img id="lightbox-img" src="" alt="">
 </div>
 
