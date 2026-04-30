@@ -732,6 +732,12 @@ nav.scrolled {
   letter-spacing: 1px;
 }
 .horario-cerrado { color: var(--muted); font-style: italic; font-weight: 400; }
+.horario-times {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
 
 .info-contacto {
   padding: 40px 36px;
@@ -922,20 +928,58 @@ footer {
 }
 
 @media (max-width: 640px) {
+  /* nav */
   nav { padding: 0 20px; }
   .nav-logo-script { display: none; }
+  .chip-light { display: none; }
 
-  .hero-content { flex-direction: column; align-items: flex-start; padding: 32px 24px 40px; }
-  .hero-right { align-items: flex-start; text-align: left; }
+  /* hero — imagen centrada y encuadrada */
+  .hero { min-height: 65svh; }
+  .hero-bg img {
+    object-position: center center;
+  }
+  .sticker { font-size: 11px; padding: 6px 12px; }
 
-  .section { padding: 56px 24px; }
+  /* secciones */
+  .section { padding: 48px 20px; }
+
+  /* carta header — apilar en móvil */
+  .carta-header-grid {
+    grid-template-columns: 1fr !important;
+    margin-bottom: 32px !important;
+  }
+  .carta-header-grid .nota-col { display: none; }
+
+  /* notas libres — más pequeñas */
+  .nota-libre { font-size: 26px; }
+  .nota-libre .heart { font-size: 30px; }
+  .nota-wrap { padding: 0 20px; }
+
+  /* grids */
   .tartas-grid { grid-template-columns: 1fr; }
-  .packs-grid { grid-template-columns: 1fr; }
+  .packs-grid  { grid-template-columns: 1fr; }
   .adaptadas-grid { grid-template-columns: 1fr; }
   .info-grid { grid-template-columns: 1fr; }
   .info-horario { border-right: none; border-bottom: var(--border); }
 
-  footer { flex-direction: column; gap: 12px; padding: 20px 24px; text-align: center; }
+  /* tabla precios — compactar */
+  .precios-header,
+  .precios-row { grid-template-columns: 1.6fr 1fr 1fr 1fr; padding: 12px 16px; }
+  .precios-row-name { font-size: 13px; }
+  .precios-row-emoji { display: none; }
+  .precios-cell { font-size: 13px; }
+
+  /* pedir pasos — apilar */
+  .pedir-grid { grid-template-columns: 1fr; }
+  .pedir-step { border-right: none; border-bottom: var(--border); }
+  .pedir-step:last-child { border-bottom: none; }
+
+  /* horario */
+  .horario-row { align-items: flex-start; gap: 8px; }
+  .horario-times { align-items: flex-end; }
+
+  /* footer */
+  footer { flex-direction: column; gap: 10px; padding: 20px 20px; text-align: center; }
   .footer-right { text-align: center; }
 }
 </style>
@@ -998,7 +1042,7 @@ footer {
   <div style="position:relative;z-index:1;">
 
     <!-- header 2 columnas: título + nota -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-bottom:52px;gap:24px;">
+    <div class="carta-header-grid" style="display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-bottom:52px;gap:24px;">
       <div>
         <p class="section-eyebrow">La carta — Temporada 2025</p>
         <h2 class="section-title" style="margin-bottom:0;">
@@ -1006,7 +1050,7 @@ footer {
           <span class="script">Cero atajos.</span>
         </h2>
       </div>
-      <div style="display:flex;justify-content:center;align-items:center;">
+      <div class="nota-col" style="display:flex;justify-content:center;align-items:center;">
         <div class="nota-libre" style="transform:rotate(-3deg);text-align:center;">
           una cucharada y<br>
           ya no hay <span class="pink">vuelta atrás.</span>
@@ -1461,19 +1505,29 @@ footer {
       <div class="horario-list">
         <div class="horario-row">
           <span class="horario-day">Martes — Viernes</span>
-          <span class="horario-time">10:00 – 14:00 · 17:00 – 20:00</span>
+          <div class="horario-times">
+            <span class="horario-time">10:00 – 14:00</span>
+            <span class="horario-time">17:00 – 20:00</span>
+          </div>
         </div>
         <div class="horario-row">
           <span class="horario-day">Sábado</span>
-          <span class="horario-time">10:00 – 14:00 · 17:00 – 20:00</span>
+          <div class="horario-times">
+            <span class="horario-time">10:00 – 14:00</span>
+            <span class="horario-time">17:00 – 20:00</span>
+          </div>
         </div>
         <div class="horario-row">
           <span class="horario-day">Domingo</span>
-          <span class="horario-time">11:00 – 14:00</span>
+          <div class="horario-times">
+            <span class="horario-time">11:00 – 14:00</span>
+          </div>
         </div>
         <div class="horario-row">
           <span class="horario-day horario-cerrado">Lunes</span>
-          <span class="horario-time horario-cerrado">Cerrado</span>
+          <div class="horario-times">
+            <span class="horario-time horario-cerrado">Cerrado</span>
+          </div>
         </div>
       </div>
     </div>
