@@ -513,7 +513,15 @@ nav.scrolled {
   align-items: center;
   gap: 10px;
 }
-.precios-row-emoji { font-size: 20px; }
+.precios-row-emoji { display: none; }
+.precios-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.25);
+  flex-shrink: 0;
+}
 .precios-row-fav {
   font-family: 'DM Mono', monospace;
   font-size: 8px;
@@ -933,10 +941,11 @@ footer {
   .nav-logo-script { display: none; }
   .chip-light { display: none; }
 
-  /* hero — imagen centrada y encuadrada */
-  .hero { min-height: 65svh; }
+  /* hero — imagen encuadrada en vertical */
+  .hero { min-height: 44svh; max-height: 380px; }
   .hero-bg img {
-    object-position: center center;
+    object-fit: cover;
+    object-position: center 40%;
   }
   .sticker { font-size: 11px; padding: 6px 12px; }
 
@@ -966,7 +975,8 @@ footer {
   .precios-header,
   .precios-row { grid-template-columns: 1.6fr 1fr 1fr 1fr; padding: 12px 16px; }
   .precios-row-name { font-size: 13px; }
-  .precios-row-emoji { display: none; }
+  .precios-thumb { display: none; }
+  .precios-row-emoji { display: inline; font-size: 18px; }
   .precios-cell { font-size: 13px; }
 
   /* pedir pasos — apilar */
@@ -1316,67 +1326,67 @@ footer {
     </div>
 
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🍰</span> Clásica <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🍰</span><img class="precios-thumb" src="clasica.jpg.png" alt="Clásica"> Clásica <span class="precios-row-fav">Favorita</span></div>
       <div class="precios-cell">30€</div>
       <div class="precios-cell">25€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span> Nutella</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span><img class="precios-thumb" src="nutella.jpg.png" alt="Nutella"> Nutella</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🍪</span> Lotus <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🍪</span><img class="precios-thumb" src="lotus.jpg.png" alt="Lotus"> Lotus <span class="precios-row-fav">Favorita</span></div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🖤</span> Oreo</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🖤</span><img class="precios-thumb" src="oreo.jpg.png" alt="Oreo"> Oreo</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">☕</span> Café</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">☕</span><img class="precios-thumb" src="queso-y-cafe.jpg.png" alt="Café"> Café</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🩷</span> Pantera Rosa</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🩷</span><img class="precios-thumb" src="pantera-rosa.jpg.png" alt="Pantera Rosa"> Pantera Rosa</div>
       <div class="precios-cell">37€</div>
       <div class="precios-cell">30€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🟢</span> Pistacho <span class="precios-row-fav">Favorita</span></div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🟢</span><img class="precios-thumb" src="pistacho.jpg.png" alt="Pistacho"> Pistacho <span class="precios-row-fav">Favorita</span></div>
       <div class="precios-cell">40€</div>
       <div class="precios-cell">30€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span> Chocolate Belga</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🍫</span><img class="precios-thumb" src="queso-y-choc-belga.jpg.png" alt="Chocolate Belga"> Chocolate Belga</div>
       <div class="precios-cell">40€</div>
       <div class="precios-cell">30€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🥭</span> Mango y Choc. Blanco</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🥭</span><img class="precios-thumb" src="queso-mango-choc-blanco.jpg.png" alt="Mango"> Mango y Choc. Blanco</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">🦛</span> Happy Hippo</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">🦛</span><img class="precios-thumb" src="happyhipo.jpg.png" alt="Happy Hippo"> Happy Hippo</div>
       <div class="precios-cell">35€</div>
       <div class="precios-cell">28€</div>
       <div class="precios-cell">10€</div>
     </div>
     <div class="precios-row">
-      <div class="precios-row-name"><span class="precios-row-emoji">★</span> Especial del Mes</div>
+      <div class="precios-row-name"><span class="precios-row-emoji">★</span><span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:inline-flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🍩</span> Especial del Mes</div>
       <div class="precios-cell">40€</div>
       <div class="precios-cell">33€</div>
       <div class="precios-cell">11€</div>
