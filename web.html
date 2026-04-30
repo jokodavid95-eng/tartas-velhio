@@ -245,7 +245,7 @@ nav.scrolled {
 .marquee-wrap {
   border-top: var(--border);
   border-bottom: var(--border);
-  background: #fff;
+  background: #FFF3C8;
   overflow: hidden;
   padding: 10px 0;
 }
@@ -282,21 +282,23 @@ nav.scrolled {
 }
 .nota-wrap.derecha { justify-content: flex-end; }
 .nota-wrap.centro  { justify-content: center; }
-.nota {
+
+.nota-libre {
   font-family: 'Caveat', cursive;
   font-weight: 700;
-  font-size: 21px;
-  line-height: 1.35;
-  background: #fff;
-  border: 2.5px solid var(--ink);
-  border-radius: 6px;
-  padding: 14px 22px;
-  display: inline-block;
-  box-shadow: 4px 4px 0 var(--ink);
-  max-width: 320px;
-  color: var(--ink);
+  font-size: 38px;
+  line-height: 1.2;
+  color: #fff;
+  pointer-events: none;
+  user-select: none;
 }
-.nota em { color: var(--salmon); font-style: normal; }
+.nota-libre .pink  { color: oklch(0.82 0.14 5); }
+.nota-libre .heart {
+  display: block;
+  margin-top: 6px;
+  font-size: 44px;
+  line-height: 1;
+}
 
 /* ── SECTIONS ────────────────────────────────────── */
 .section {
@@ -989,21 +991,29 @@ footer {
   </div>
 </div>
 
-<!-- nota 1 -->
-<div class="nota-wrap" style="padding-top:36px;padding-bottom:8px;">
-  <div class="nota" style="transform:rotate(-2deg);">una cucharada y<br>ya no hay <em>vuelta atrás.</em> 🍰</div>
-</div>
-
 <!-- ── CARTA ── -->
 <section class="section" id="carta" style="position:relative;overflow:hidden;">
   <div class="blob-bg blob-bg-1"></div>
   <div class="blob-bg blob-bg-2"></div>
   <div style="position:relative;z-index:1;">
-    <p class="section-eyebrow">La carta — Temporada 2025</p>
-    <h2 class="section-title">
-      Doce tartas.<br>
-      <span class="script">Cero atajos.</span>
-    </h2>
+
+    <!-- header 2 columnas: título + nota -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-bottom:52px;gap:24px;">
+      <div>
+        <p class="section-eyebrow">La carta — Temporada 2025</p>
+        <h2 class="section-title" style="margin-bottom:0;">
+          Doce tartas.<br>
+          <span class="script">Cero atajos.</span>
+        </h2>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <div class="nota-libre" style="transform:rotate(-3deg);text-align:center;">
+          una cucharada y<br>
+          ya no hay <span class="pink">vuelta atrás.</span>
+          <span class="heart">♡</span>
+        </div>
+      </div>
+    </div>
 
     <div class="tartas-grid">
 
@@ -1331,8 +1341,12 @@ footer {
 </section>
 
 <!-- nota 2 -->
-<div class="nota-wrap derecha" style="padding-bottom:8px;">
-  <div class="nota" style="transform:rotate(2deg);">nacidas en Uruguay,<br>horneadas en <em>Madrid.</em> 🌍</div>
+<div class="nota-wrap derecha" style="padding-top:32px;padding-bottom:8px;">
+  <div class="nota-libre" style="transform:rotate(2.5deg);text-align:right;">
+    nacidas en <span class="pink">Uruguay,</span><br>
+    horneadas en Madrid.
+    <span class="heart">♡</span>
+  </div>
 </div>
 
 <!-- ── PACKS ── -->
@@ -1393,8 +1407,12 @@ footer {
 </section>
 
 <!-- nota 3 -->
-<div class="nota-wrap centro" style="padding-bottom:8px;">
-  <div class="nota" style="transform:rotate(-1.5deg);">sin prisa, pero sin pausa.<br>todo <em>hecho a mano.</em> 🤍</div>
+<div class="nota-wrap centro" style="padding-top:32px;padding-bottom:8px;">
+  <div class="nota-libre" style="transform:rotate(-2deg);text-align:center;">
+    todo <span class="pink">hecho a mano.</span><br>
+    sin prisa, sin atajos
+    <span class="heart">♡</span>
+  </div>
 </div>
 
 <!-- ── CÓMO PEDIR ── -->
