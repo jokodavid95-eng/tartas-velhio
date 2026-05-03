@@ -37,7 +37,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── NAV GLASS ────────────────────────────────────── */
+/* ── NAV FLOTANTE ──────────────────────────────────── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -45,25 +45,29 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 36px;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(28,10,4,0.08);
+  padding: 0 28px;
+  background: transparent;
   z-index: 200;
-  transition: background 0.4s, border-color 0.4s;
+  pointer-events: none;   /* el nav en sí no captura clics */
 }
-nav.scrolled {
-  background: rgba(255,255,255,0.55);
-  border-color: rgba(28,10,4,0.04);
-}
+nav > * { pointer-events: auto; }  /* sólo los hijos los capturan */
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   color: var(--ink);
+  background: rgba(255,255,255,0.92);
+  padding: 6px 14px 6px 10px;
+  border-radius: 40px;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.nav-logo:hover {
+  transform: translate(-1px,-1px);
+  box-shadow: 5px 5px 0 var(--ink);
 }
 .nav-logo-dot {
   width: 14px; height: 14px;
@@ -230,10 +234,10 @@ nav.scrolled {
 
 /* ── HERO ─────────────────────────────────────────── */
 .hero {
-  margin-top: var(--nav-h);
+  margin-top: 0;
   position: relative;
   width: 100%;
-  min-height: calc(100svh - var(--nav-h));
+  min-height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -1941,9 +1945,6 @@ footer {
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
-  });
 
   /* ── Mobile menu ── */
   const hamburger    = document.getElementById('nav-hamburger');
