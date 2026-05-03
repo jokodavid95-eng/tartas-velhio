@@ -84,26 +84,63 @@ nav.scrolled {
   color: var(--salmon);
 }
 
-.nav-actions {
+/* ── NAV PILLS ────────────────────────────────────── */
+.nav-pills {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
+  flex: 1;
+  justify-content: center;
+  padding: 0 16px;
 }
-.chip {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 7px 14px;
+.nav-pill {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  padding: 7px 16px;
   border-radius: 40px;
-  border: var(--border);
-  white-space: nowrap;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
   text-decoration: none;
-  display: inline-block;
+  color: var(--ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
 }
-.chip-dark { background: var(--ink); color: var(--cream); }
-.chip-light { background: var(--cream); color: var(--ink); }
-.chip-salmon { background: var(--salmon); color: #fff; }
+.nav-pill:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+.nav-pill:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.pill-yellow { background: oklch(0.94 0.12 88); }
+.pill-coral  { background: oklch(0.88 0.12 40); }
+.pill-rose   { background: oklch(0.90 0.10 8); }
+.pill-green  { background: oklch(0.88 0.12 132); }
+.pill-amber  { background: oklch(0.86 0.13 60); }
+
+.nav-cta {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.2px;
+  padding: 8px 18px;
+  border-radius: 40px;
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  flex-shrink: 0;
+}
+.nav-cta:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgba(28,10,4,0.35);
+}
 
 /* ── HERO ─────────────────────────────────────────── */
 .hero {
@@ -468,6 +505,123 @@ nav.scrolled {
   margin-top: 1px;
   text-align: right;
 }
+
+/* ── FAVORITAS ───────────────────────────────────── */
+.favoritas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.fav-card {
+  background: #fff;
+  border: var(--border);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+}
+.fav-card:hover {
+  transform: translateY(-4px) rotate(0deg) !important;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+.fav-card-img {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.fav-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.fav-card:hover .fav-card-img img { transform: scale(1.05); }
+.fav-star-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--salmon);
+  color: #fff;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: 40px;
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+}
+.fav-card-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+.fav-card-name {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.0;
+}
+.fav-card-sub {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1;
+  margin-top: -2px;
+}
+.fav-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+  flex-grow: 1;
+}
+.fav-card-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.5px dashed rgba(28,13,5,0.25);
+  padding-top: 14px;
+  gap: 10px;
+}
+.fav-price {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.fav-order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 9px 18px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
+}
+.fav-order-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+/* color accents per card */
+.fav-card-clasica  .fav-star-badge { background: var(--salmon); }
+.fav-card-pistacho .fav-star-badge { background: var(--green); }
+.fav-card-lotus    .fav-star-badge { background: oklch(0.65 0.14 60); }
 
 /* ── PRECIOS ──────────────────────────────────────── */
 .precios-wrap {
@@ -928,18 +1082,22 @@ footer {
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 960px) {
   .tartas-grid { grid-template-columns: repeat(2, 1fr); }
+  .favoritas-grid { grid-template-columns: repeat(2, 1fr); }
   .packs-grid { grid-template-columns: 1fr 1fr; }
   .pedir-grid { grid-template-columns: 1fr; }
   .pedir-step { border-right: none; border-bottom: var(--border); }
   .pedir-step:last-child { border-bottom: none; }
   .precios-header, .precios-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+  .nav-pills { gap: 5px; }
+  .nav-pill { font-size: 12px; padding: 6px 12px; }
+  .nav-cta { font-size: 12px; padding: 7px 14px; }
 }
 
 @media (max-width: 640px) {
   /* nav */
   nav { padding: 0 20px; }
   .nav-logo-script { display: none; }
-  .chip-light { display: none; }
+  .nav-pills { display: none; }
 
   /* hero — imagen limpia en móvil */
   .hero { min-height: 32svh; max-height: 260px; }
@@ -966,6 +1124,7 @@ footer {
 
   /* grids */
   .tartas-grid { grid-template-columns: 1fr; }
+  .favoritas-grid { grid-template-columns: 1fr; }
   .packs-grid  { grid-template-columns: 1fr; }
   .adaptadas-grid { grid-template-columns: 1fr; }
   .info-grid { grid-template-columns: 1fr; }
@@ -1003,10 +1162,14 @@ footer {
     <span class="nav-logo-name">Velhio</span>
     <span class="nav-logo-script">tartas</span>
   </a>
-  <div class="nav-actions">
-    <a href="#carta" class="chip chip-light">La carta</a>
-    <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Velhio%20%F0%9F%8D%B0" class="chip chip-salmon" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  <div class="nav-pills">
+    <a href="#" class="nav-pill pill-yellow">Inicio</a>
+    <a href="#carta" class="nav-pill pill-coral">Carta</a>
+    <a href="#favoritas" class="nav-pill pill-rose">Favoritas ★</a>
+    <a href="#pedir" class="nav-pill pill-green">Cómo pedir</a>
+    <a href="#contacto" class="nav-pill pill-amber">Contacto</a>
   </div>
+  <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Velhio%20%F0%9F%8D%B0" class="nav-cta" target="_blank" rel="noopener">Encargar →</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1044,6 +1207,73 @@ footer {
     <span>📱 pedidos por WhatsApp</span><span class="dot">·</span>
   </div>
 </div>
+
+<!-- ── FAVORITAS ── -->
+<section class="section" id="favoritas" style="position:relative;overflow:hidden;">
+  <div class="blob-bg blob-bg-1" style="opacity:0.3;"></div>
+  <div style="position:relative;z-index:1;">
+    <p class="section-eyebrow">Las más pedidas · Top 3</p>
+    <h2 class="section-title">
+      Tres tartas.<br>
+      <span class="script">Tres veces sí.</span>
+    </h2>
+
+    <div class="favoritas-grid">
+
+      <!-- Clásica -->
+      <div class="fav-card fav-card-clasica" style="transform:rotate(-1.6deg);">
+        <div class="fav-card-img" onclick="openLightbox('clasica.jpg.png','Clásica')">
+          <img src="clasica.jpg.png" alt="Clásica">
+          <div class="fav-star-badge">★ Favorita</div>
+        </div>
+        <div class="fav-card-body">
+          <h3 class="fav-card-name">Clásica</h3>
+          <div class="fav-card-sub">The classic</div>
+          <p class="fav-card-desc">La que empezó todo. Queso crema batido, base de galleta mantecosa, corazón que tiembla. La más pedida de la carta, sin discusión.</p>
+          <div class="fav-card-footer">
+            <span class="fav-price">desde 10€</span>
+            <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20pedir%20la%20Cl%C3%A1sica%20%F0%9F%8D%B0" class="fav-order-btn" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pistacho -->
+      <div class="fav-card fav-card-pistacho" style="transform:rotate(1.4deg);">
+        <div class="fav-card-img" onclick="openLightbox('pistacho.jpg.png','Pistacho')">
+          <img src="pistacho.jpg.png" alt="Pistacho">
+          <div class="fav-star-badge" style="background:var(--green);">★ Gourmet</div>
+        </div>
+        <div class="fav-card-body">
+          <h3 class="fav-card-name">Pistacho</h3>
+          <div class="fav-card-sub">Pistachio dream</div>
+          <p class="fav-card-desc">Mousse de pistacho siciliano, crumble verde, la más gourmet de todas. La que pide quien entiende de tartas. Un nivel aparte.</p>
+          <div class="fav-card-footer">
+            <span class="fav-price">desde 10€</span>
+            <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20pedir%20la%20Pistacho%20%F0%9F%8D%B0" class="fav-order-btn" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lotus -->
+      <div class="fav-card fav-card-lotus" style="transform:rotate(-1.2deg);">
+        <div class="fav-card-img" onclick="openLightbox('lotus.jpg.png','Lotus')">
+          <img src="lotus.jpg.png" alt="Lotus">
+          <div class="fav-star-badge" style="background:oklch(0.65 0.14 60);">★ Favorita</div>
+        </div>
+        <div class="fav-card-body">
+          <h3 class="fav-card-name">Lotus</h3>
+          <div class="fav-card-sub">Caramel biscoff</div>
+          <p class="fav-card-desc">Galleta Lotus caramelizada dentro y fuera. El punto dulce perfecto que nadie consigue replicar. Una vez que la pruebas, repites.</p>
+          <div class="fav-card-footer">
+            <span class="fav-price">desde 10€</span>
+            <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20pedir%20la%20Lotus%20%F0%9F%8D%B0" class="fav-order-btn" target="_blank" rel="noopener">Pedir →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ── CARTA ── -->
 <section class="section" id="carta" style="position:relative;overflow:hidden;">
@@ -1502,7 +1732,7 @@ footer {
 </section>
 
 <!-- ── HORARIO + CONTACTO ── -->
-<section class="section" style="padding-top:0;">
+<section class="section" id="contacto" style="padding-top:0;">
   <p class="section-eyebrow">Dónde y cuándo</p>
   <h2 class="section-title">
     Ven a vernos,<br>
