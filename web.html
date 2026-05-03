@@ -142,6 +142,92 @@ nav.scrolled {
   box-shadow: 5px 5px 0 rgba(28,10,4,0.35);
 }
 
+/* ── HAMBURGER MOBILE ─────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: oklch(0.58 0.22 25);  /* rojo coral brand */
+  border: 2.5px solid var(--ink);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+.nav-hamburger:hover { transform: translate(-1px,-1px); }
+.nav-hamburger span {
+  display: block;
+  width: 19px; height: 2.5px;
+  background: #fff;
+  border-radius: 3px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ── MOBILE MENU PANEL ────────────────────────────── */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(28,10,4,0.45);
+  z-index: 190;
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.mobile-menu-overlay.open { display: block; opacity: 1; }
+
+.mobile-menu-panel {
+  position: fixed;
+  top: calc(var(--nav-h) + 8px);
+  right: 12px;
+  width: 180px;
+  background: transparent;
+  z-index: 195;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateX(210px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+  pointer-events: none;
+}
+.mobile-menu-panel.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu-panel .m-pill {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  padding: 10px 22px;
+  border-radius: 40px;
+  border: 2.5px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.mobile-menu-panel .m-pill:hover, .mobile-menu-panel .m-pill:active {
+  transform: translate(-1px,-1px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.m-pill-yellow { background: oklch(0.94 0.12 88); }
+.m-pill-coral  { background: oklch(0.88 0.12 40); }
+.m-pill-rose   { background: oklch(0.90 0.10 8); }
+.m-pill-green  { background: oklch(0.88 0.12 132); }
+.m-pill-amber  { background: oklch(0.86 0.13 60); }
+
 /* ── HERO ─────────────────────────────────────────── */
 .hero {
   margin-top: var(--nav-h);
@@ -1095,15 +1181,21 @@ footer {
 
 @media (max-width: 640px) {
   /* nav */
-  nav { padding: 0 20px; }
+  nav { padding: 0 16px; }
   .nav-logo-script { display: none; }
   .nav-pills { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
 
-  /* hero — imagen limpia en móvil */
-  .hero { min-height: 32svh; max-height: 260px; }
+  /* hero — achatado y panorámico en móvil */
+  .hero {
+    height: 200px;
+    min-height: unset;
+    max-height: unset;
+  }
   .hero-bg img {
     object-fit: cover;
-    object-position: center 40%;
+    object-position: center 35%;
   }
   .sticker { display: none; }
 
@@ -1170,6 +1262,20 @@ footer {
     <a href="#contacto" class="nav-pill pill-amber">Contacto</a>
   </div>
   <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Velhio%20%F0%9F%8D%B0" class="nav-cta" target="_blank" rel="noopener">Encargar →</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<nav class="mobile-menu-panel" id="mobile-menu-panel" aria-label="Menú móvil">
+  <a href="#"          class="m-pill m-pill-yellow" data-menu-link>Inicio</a>
+  <a href="#carta"     class="m-pill m-pill-coral"  data-menu-link>Carta</a>
+  <a href="#favoritas" class="m-pill m-pill-rose"   data-menu-link>Favoritas ★</a>
+  <a href="#pedir"     class="m-pill m-pill-green"  data-menu-link>Cómo pedir</a>
+  <a href="#contacto"  class="m-pill m-pill-amber"  data-menu-link>Contacto</a>
+  <a href="https://wa.me/34661764709?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20Velhio%20%F0%9F%8D%B0" class="m-pill" style="background:var(--ink);color:var(--cream);" target="_blank" rel="noopener" data-menu-link>Encargar →</a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1837,6 +1943,38 @@ footer {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   window.addEventListener('scroll', () => {
     document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* ── Mobile menu ── */
+  const hamburger    = document.getElementById('nav-hamburger');
+  const mobilePanel  = document.getElementById('mobile-menu-panel');
+  const mobileOverlay= document.getElementById('mobile-menu-overlay');
+
+  function openMenu() {
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded','true');
+    mobilePanel.classList.add('open');
+    mobileOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+    mobilePanel.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleMenu() {
+    mobilePanel.classList.contains('open') ? closeMenu() : openMenu();
+  }
+
+  hamburger.addEventListener('click', toggleMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  document.querySelectorAll('[data-menu-link]').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobilePanel.classList.contains('open')) closeMenu();
   });
 </script>
 </body>
